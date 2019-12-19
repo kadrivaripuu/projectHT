@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import MasterLayout from './components/pages/MasterLayout.jsx';
+
+import DemoDetailsPage from './components/pages/DemoDetailsPage';
 
 
 function App() {
   return (
-    <div className="default-text">
-      <MasterLayout />
+    <div>
+      <DemoDetailsPage />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React from 'react';
-import MainNavbar from '../containers/MainNavbar.jsx';
-import Footer from '../containers/Footer.jsx';
-import LeftMenu from '../containers/LeftMenu.jsx';
-import Content from '../containers/Content.jsx';
-import MasterLayout from './MasterLayout.jsx';
+import ScrollSidebar from '../containers/ScrollSidebar.jsx';
+import Topbar from '../containers/Topbar.jsx';
+import ContentForm from '../containers/ContentForm.jsx';
+
+
 
 export default class DemoDetailsPage extends React.Component {
     constructor(props) {
@@ -13,7 +13,33 @@ export default class DemoDetailsPage extends React.Component {
 
     render() {
         return (
-            <div>...</div>
+            <div id="main-wrapper">
+                <Topbar />
+                <ScrollSidebar />
+                <div className="page-wrapper">
+                    <div className="page-breadcrumb">
+                        <div className="row">
+                            <div className="col-12 d-flex no-block align-items-center">
+                                <h4 className="page-title">Form Basic</h4>
+                                <div className="ml-auto text-right">
+                                    <nav aria-label="breadcrumb">
+                                        <ol className="breadcrumb">
+                                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li className="breadcrumb-item active" aria-current="page">Library</li>
+                                        </ol>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="container-fluid">
+                    <ContentForm />
+                    </div>
+                </div>
+
+
+
+            </div>
 
         );
     }
