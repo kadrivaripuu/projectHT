@@ -4,8 +4,7 @@ import Topbar from '../containers/Topbar.jsx';
 import ContentForm from '../containers/ContentForm.jsx';
 
 
-
-export default class DemoDetailsPage extends React.Component {
+export default class MasterLayout extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -24,7 +23,7 @@ export default class DemoDetailsPage extends React.Component {
                                 <div className="ml-auto text-right">
                                     <nav aria-label="breadcrumb">
                                         <ol className="breadcrumb">
-                                            <li className="breadcrumb-item"><a href="#">Home</a></li>
+                                            <li className="breadcrumb-item">Home</li>
                                             <li className="breadcrumb-item active" aria-current="page">Library</li>
                                         </ol>
                                     </nav>
