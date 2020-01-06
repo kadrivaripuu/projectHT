@@ -17,7 +17,6 @@ export default class ContentForm extends React.Component {
             fname: "",
             lname: "",
             password: "",
-            passwordRepeat: "",
             email: ""
         };
 
@@ -41,11 +40,11 @@ export default class ContentForm extends React.Component {
 
         axios.get(mockDataUrl, config)
                 .then((response) => {
-                    console.log(response.data);
+        
                     this.setState({fname: response.data.fname});
                     this.setState({lname: response.data.lname});
                     this.setState({password: response.data.password});
-                    this.setState({passwordRepeat: response.data.passwordRepeat});
+                    
                     this.setState({email: response.data.email});
                 }).catch((exception) => {
                     console.log(exception);
@@ -58,13 +57,12 @@ export default class ContentForm extends React.Component {
             headers: {"Content-Type": "application/json","Accept": "application/json" }          
         }
 
-        console.log(this.state);
-        console.log(this.state);
+ 
         // console.log("take all data from this.state");
         axios.post(echoMockoon, this.state, options)
         .then((response) => {
             console.log("post-response received ");
-            console.log(response.data);
+
         }).catch((exception)=>{
             console.log(exception);
         });
@@ -76,7 +74,7 @@ export default class ContentForm extends React.Component {
     render() {
         return (
 
-            <div className="row">
+            <div className="row justify-content-around">
                 <div className="col-md-8">
                     <div className="card">
                         <form className="form-horizontal" onSubmit={this.handleSubmit}>
@@ -85,31 +83,31 @@ export default class ContentForm extends React.Component {
                                 <div className="form-group row">
                                     <label htmlFor="fname" className="col-sm-4 text-right control-label col-form-label">First Name</label>
                                     <div className="col-sm-8">
-                                        <input type="text" className="form-control" id="fname" placeholder="First Name Here..." value={this.state.fname} onChange={(e) => this.setState({ 'fname': e.target.value })} ></input>
+                                        <input type="text" className="form-control" id="fname" placeholder="First Name Here..." value={this.state.fname} onChange={(e) => this.setState({ 'fname': e.target.value })}/>
                                     </div >
                                 </div>
                                 <div className="form-group row">
                                     <label htmlFor="lname" className="col-sm-4 text-right control-label col-form-label">Last Name</label>
                                     <div className="col-sm-8">
-                                        <input type="text" className="form-control" id="lname" placeholder="Last Name Here..." value={this.state.lname} onChange={(e) => this.setState({ 'lname': e.target.value })}></input>
+                                        <input type="text" className="form-control" id="lname" placeholder="Last Name Here..." value={this.state.lname} onChange={(e) => this.setState({ 'lname': e.target.value })}/>
                                     </div >
                                 </div>
                                 <div className="form-group row">
                                     <label htmlFor="password" className="col-sm-4 text-right control-label col-form-label">Password</label>
                                     <div className="col-sm-8">
-                                        <input type="text" className="form-control" id="password" placeholder="Password Here..." value={this.state.password} onChange={(e) => this.setState({ 'password': e.target.value })}></input>
+                                        <input type="text" className="form-control" id="password" placeholder="Password Here..." value={this.state.password} onChange={(e) => this.setState({ 'password': e.target.value })}/>
                                     </div >
                                 </div>
                                 <div className="form-group row">
                                     <label htmlFor="passwordRepeat" className="col-sm-4 text-right control-label col-form-label">Repeat Password</label>
                                     <div className="col-sm-8">
-                                        <input type="text" className="form-control" id="passwordRepeat" placeholder="Repeat Password Here..." value={this.state.passwordRepeat} onChange={(e) => this.setState({ 'passwordRepeat': e.target.value })}></input>
+                                        <input type="text" className="form-control" id="passwordRepeat" placeholder="Repeat Password Here..." />
                                     </div >
                                 </div>
                                 <div className="form-group row">
                                     <label htmlFor="email" className="col-sm-4 text-right control-label col-form-label">Email</label>
                                     <div className="col-sm-8">
-                                        <input type="text" className="form-control" id="email" placeholder="Email Here..." value={this.state.email} onChange={(e) => this.setState({ 'email': e.target.value })}></input>
+                                        <input type="text" className="form-control" id="email" placeholder="Email Here..." value={this.state.email} onChange={(e) => this.setState({ 'email': e.target.value })}/>
                                     </div >
                                 </div>
                                 <div className="border-top">
