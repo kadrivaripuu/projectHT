@@ -92,126 +92,7 @@ export default class Dashboard extends React.Component {
                                 </div>
                             </div>
                         </div>
-
-                        <div className="card">
-                            <div className="card-body">
-                                <h4 className="card-title">To Do List</h4>
-                                <div className="todo-widget scrollable" style={{ height: "450px" }}>
-                                    <ul className="list-task todo-list list-group m-b-0" data-role="tasklist">
-                                        <li className="list-group-item todo-item" data-role="task">
-                                            <div className="custom-control custom-checkbox">
-                                                <input type="checkbox" className="custom-control-input" id="customCheck" />
-                                                <label className="custom-control-label todo-label" for="customCheck">
-                                                    <span className="todo-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span> <span className="badge badge-pill badge-danger float-right">Today</span>
-                                                </label>
-                                            </div>
-                                            <ul className="list-style-none assignedto">
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave" /></li>
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica" /></li>
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka" /></li>
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina" /></li>
-                                            </ul>
-                                        </li>
-                                        <li className="list-group-item todo-item" data-role="task">
-                                            <div className="custom-control custom-checkbox">
-                                                <input type="checkbox" className="custom-control-input" id="customCheck1" />
-                                                <label className="custom-control-label todo-label" for="customCheck1">
-                                                    <span className="todo-desc">Lorem Ipsum is simply dummy text of the printing</span><span className="badge badge-pill badge-primary float-right">1 week </span>
-                                                </label>
-                                            </div>
-                                            <div className="item-date"> 26 jun 2017</div>
-                                        </li>
-                                        <li className="list-group-item todo-item" data-role="task">
-                                            <div className="custom-control custom-checkbox">
-                                                <input type="checkbox" className="custom-control-input" id="customCheck2" />
-                                                <label className="custom-control-label todo-label" for="customCheck2">
-                                                    <span className="todo-desc">Give Purchase report to</span> <span className="badge badge-pill badge-info float-right">Yesterday</span>
-                                                </label>
-                                            </div>
-                                            <ul className="list-style-none assignedto">
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka" /></li>
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina" /></li>
-                                            </ul>
-                                        </li>
-                                        <li className="list-group-item todo-item" data-role="task">
-                                            <div className="custom-control custom-checkbox">
-                                                <input type="checkbox" className="custom-control-input" id="customCheck3" />
-                                                <label className="custom-control-label todo-label" for="customCheck3">
-                                                    <span className="todo-desc">Lorem Ipsum is simply dummy text of the printing </span> <span className="badge badge-pill badge-warning float-right">2 weeks</span>
-                                                </label>
-                                            </div>
-                                            <div className="item-date"> 26 jun 2017</div>
-                                        </li>
-                                        <li className="list-group-item todo-item" data-role="task">
-                                            <div className="custom-control custom-checkbox">
-                                                <input type="checkbox" className="custom-control-input" id="customCheck4" />
-                                                <label className="custom-control-label todo-label" for="customCheck4">
-                                                    <span className="todo-desc">Give Purchase report to</span> <span className="badge badge-pill badge-info float-right">Yesterday</span>
-                                                </label>
-                                            </div>
-                                            <ul className="list-style-none assignedto">
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka" /></li>
-                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina" /></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
-
-                        <div className="card">
-                            <div className="card-body">
-                                <h4 className="card-title m-b-0">Progress Box</h4>
-                                <div className="m-t-20">
-                                    <div className="d-flex no-block align-items-center">
-                                        <span>81% Clicks</span>
-                                        <div className="ml-auto">
-                                            <span>125</span>
-                                        </div>
-                                    </div>
-                                    <div className="progress">
-                                        <div className="progress-bar progress-bar-striped" role="progressbar" style={{ width: "81%" }} aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="d-flex no-block align-items-center m-t-25">
-                                        <span>72% Uniquie Clicks</span>
-                                        <div className="ml-auto">
-                                            <span>120</span>
-                                        </div>
-                                    </div>
-                                    <div className="progress">
-                                        <div className="progress-bar progress-bar-striped bg-success" role="progressbar" style={{ width: "72%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="d-flex no-block align-items-center m-t-25">
-                                        <span>53% Impressions</span>
-                                        <div className="ml-auto">
-                                            <span>785</span>
-                                        </div>
-                                    </div>
-                                    <div className="progress">
-                                        <div className="progress-bar progress-bar-striped bg-info" role="progressbar" style={{ width: "53%" }} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="d-flex no-block align-items-center m-t-25">
-                                        <span>3% Online Users</span>
-                                        <div className="ml-auto">
-                                            <span>8</span>
-                                        </div>
-                                    </div>
-                                    <div className="progress">
-                                        <div className="progress-bar progress-bar-striped bg-danger" role="progressbar" style={{ width: "3%" }} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="card">
+                        {/* <div className="card">
                             <div className="card-body">
                                 <h4 className="card-title m-b-0">News Updates</h4>
                             </div>
@@ -282,10 +163,118 @@ export default class Dashboard extends React.Component {
                                     </div>
                                 </li>
                             </ul>
+                        </div> */}
+
+                    </div>
+                    <div className="col-md-6">
+
+                        <div className="card">
+                            <div className="card-body">
+                                <h4 className="card-title m-b-0">Progress Box</h4>
+                                <div className="m-t-20">
+                                    <div className="d-flex no-block align-items-center">
+                                        <span>81% Clicks</span>
+                                        <div className="ml-auto">
+                                            <span>125</span>
+                                        </div>
+                                    </div>
+                                    <div className="progress">
+                                        <div className="progress-bar progress-bar-striped" role="progressbar" style={{ width: "81%" }} aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="d-flex no-block align-items-center m-t-25">
+                                        <span>72% Uniquie Clicks</span>
+                                        <div className="ml-auto">
+                                            <span>120</span>
+                                        </div>
+                                    </div>
+                                    <div className="progress">
+                                        <div className="progress-bar progress-bar-striped bg-success" role="progressbar" style={{ width: "72%" }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="d-flex no-block align-items-center m-t-25">
+                                        <span>53% Impressions</span>
+                                        <div className="ml-auto">
+                                            <span>785</span>
+                                        </div>
+                                    </div>
+                                    <div className="progress">
+                                        <div className="progress-bar progress-bar-striped bg-info" role="progressbar" style={{ width: "53%" }} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div className="d-flex no-block align-items-center m-t-25">
+                                        <span>3% Online Users</span>
+                                        <div className="ml-auto">
+                                            <span>8</span>
+                                        </div>
+                                    </div>
+                                    <div className="progress">
+                                        <div className="progress-bar progress-bar-striped bg-danger" role="progressbar" style={{ width: "3%" }} aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        <div className="card">
+                            <div className="card-body">
+                                <h4 className="card-title">To Do List</h4>
+                                <div className="todo-widget scrollable" style={{ height: "450px" }}>
+                                    <ul className="list-task todo-list list-group m-b-0" data-role="tasklist">
+                                        <li className="list-group-item todo-item" data-role="task">
+                                            <div className="custom-control custom-checkbox">
+                                                <input type="checkbox" className="custom-control-input" id="customCheck" />
+                                                <label className="custom-control-label todo-label" htmlFor="customCheck">
+                                                    <span className="todo-desc">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span> <span className="badge badge-pill badge-danger float-right">Today</span>
+                                                </label>
+                                            </div>
+                                            <ul className="list-style-none assignedto">
+                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/1.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Steave" /></li>
+                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/2.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jessica" /></li>
+                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka" /></li>
+                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina" /></li>
+                                            </ul>
+                                        </li>
+                                        <li className="list-group-item todo-item" data-role="task">
+                                            <div className="custom-control custom-checkbox">
+                                                <input type="checkbox" className="custom-control-input" id="customCheck1" />
+                                                <label className="custom-control-label todo-label" htmlFor="customCheck1">
+                                                    <span className="todo-desc">Lorem Ipsum is simply dummy text of the printing</span><span className="badge badge-pill badge-primary float-right">1 week </span>
+                                                </label>
+                                            </div>
+                                            <div className="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        <li className="list-group-item todo-item" data-role="task">
+                                            <div className="custom-control custom-checkbox">
+                                                <input type="checkbox" className="custom-control-input" id="customCheck2" />
+                                                <label className="custom-control-label todo-label" htmlFor="customCheck2">
+                                                    <span className="todo-desc">Give Purchase report to</span> <span className="badge badge-pill badge-info float-right">Yesterday</span>
+                                                </label>
+                                            </div>
+                                            <ul className="list-style-none assignedto">
+                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/3.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Priyanka" /></li>
+                                                <li className="assignee"><img className="rounded-circle" width="40" src="assets/images/users/4.jpg" alt="user" data-toggle="tooltip" data-placement="top" title="" data-original-title="Selina" /></li>
+                                            </ul>
+                                        </li>
+                                        <li className="list-group-item todo-item" data-role="task">
+                                            <div className="custom-control custom-checkbox">
+                                                <input type="checkbox" className="custom-control-input" id="customCheck3" />
+                                                <label className="custom-control-label todo-label" htmlFor="customCheck3">
+                                                    <span className="todo-desc">Lorem Ipsum is simply dummy text of the printing </span> <span className="badge badge-pill badge-warning float-right">2 weeks</span>
+                                                </label>
+                                            </div>
+                                            <div className="item-date"> 26 jun 2017</div>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-                <div className="row">
+                {/* <div className="row">
                     <div className="col-md-12">
                         <h5 className="card-title">Calender</h5>
                         <div className="card">
@@ -307,7 +296,7 @@ export default class Dashboard extends React.Component {
 
                                                     <div className="custom-control custom-checkbox">
                                                         <input type="checkbox" className="custom-control-input" id="drop-remove" />
-                                                        <label className="custom-control-label" for="drop-remove">Remove after drop</label>
+                                                        <label className="custom-control-label" htmlFor="drop-remove">Remove after drop</label>
                                                     </div>
                                                     <a href="" data-toggle="modal" data-target="#add-new-event" className="btn m-t-20 btn-info btn-block waves-effect waves-light">
                                                         <i className="ti-plus"></i> Add New Event
@@ -325,9 +314,9 @@ export default class Dashboard extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="modal none-border" id="my-event">
+                {/* <div className="modal none-border" id="my-event">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -342,9 +331,9 @@ export default class Dashboard extends React.Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="modal fade none-border" id="add-new-event">
+                {/* <div className="modal fade none-border" id="add-new-event">
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
@@ -377,8 +366,8 @@ export default class Dashboard extends React.Component {
                                 <button type="button" className="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </div> 
+                </div>*/}
             </React.Fragment>
         );
     }

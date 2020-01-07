@@ -16,6 +16,7 @@ export default class ContentForm extends React.Component {
         this.state = {
             fname: "",
             lname: "",
+            username: "",
             password: "",
             email: ""
         };
@@ -43,8 +44,8 @@ export default class ContentForm extends React.Component {
         
                     this.setState({fname: response.data.fname});
                     this.setState({lname: response.data.lname});
+                    this.setState({username: response.data.username});
                     this.setState({password: response.data.password});
-                    
                     this.setState({email: response.data.email});
                 }).catch((exception) => {
                     console.log(exception);
@@ -75,10 +76,10 @@ export default class ContentForm extends React.Component {
         return (
 
             <div className="row justify-content-around">
-                <div className="col-md-8">
-                    <div className="card">
-                        <form className="form-horizontal" onSubmit={this.handleSubmit}>
-                            <div className="card-body">
+                <div className="col-md-8 ">
+                    <div className="card ">
+                        <form className="form-horizontal " onSubmit={this.handleSubmit}>
+                            <div className="card-body ">
                                 <h4 className="card-title">Registration Form</h4>
                                 <div className="form-group row">
                                     <label htmlFor="fname" className="col-sm-4 text-right control-label col-form-label">First Name</label>
@@ -90,6 +91,12 @@ export default class ContentForm extends React.Component {
                                     <label htmlFor="lname" className="col-sm-4 text-right control-label col-form-label">Last Name</label>
                                     <div className="col-sm-8">
                                         <input type="text" className="form-control" id="lname" placeholder="Last Name Here..." value={this.state.lname} onChange={(e) => this.setState({ 'lname': e.target.value })}/>
+                                    </div >
+                                </div>
+                                <div className="form-group row">
+                                    <label htmlFor="username" className="col-sm-4 text-right control-label col-form-label">Username</label>
+                                    <div className="col-sm-8">
+                                        <input type="text" className="form-control" id="username" placeholder="Username Here..." value={this.state.username} onChange={(e) => this.setState({ 'username': e.target.value })}/>
                                     </div >
                                 </div>
                                 <div className="form-group row">
@@ -110,9 +117,9 @@ export default class ContentForm extends React.Component {
                                         <input type="text" className="form-control" id="email" placeholder="Email Here..." value={this.state.email} onChange={(e) => this.setState({ 'email': e.target.value })}/>
                                     </div >
                                 </div>
-                                <div className="border-top">
+                                <div className="border-top ">
                                     <div className="card-body">
-                                        <button type="submit" className="btn btn-primary">Save</button>
+                                        <button type="submit" className="btn btn-primary ">Save</button>
                                         <button type="submit" className="btn btn-secondary">Cancel</button>
                                     </div>
                                 </div>

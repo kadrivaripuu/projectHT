@@ -14,7 +14,7 @@ export default class LoginPage extends React.Component {
 
     render() {
         return (
-            <div className="row">
+            <div className="row justify-content-around">
                 <div className="col-md-8">
                     <div className="card">
                         <form className="form-horizontal" >
