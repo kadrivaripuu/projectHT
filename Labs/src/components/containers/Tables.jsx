@@ -2,7 +2,7 @@ import React from 'react';
 
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import { TasklistData } from '../data/TasklistData.js';
+import { tasklistData } from '../data/TasklistData.js';
 
 
 const selectRow = {
@@ -73,10 +73,10 @@ export default class Tables extends React.Component {
                 <h4>Table Demo:</h4>
 
                 <BootstrapTable
-                    keyField='id' data={TasklistData} columns={columns}
+                    keyField='id' data={tasklistData} columns={columns}
+                    
                     striped
                     hover
-                    condensed
                     selectRow={selectRow}
                 />
 

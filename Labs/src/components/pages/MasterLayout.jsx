@@ -7,8 +7,8 @@ import LoginPage from '../containers/LoginPage.jsx';
 import ContentForm from '../containers/ContentForm.jsx';
 import DefaultContent from '../containers/DefaultContent.jsx';
 import Dashboard from '../containers/Dashboard.jsx';
+import TableUsers from '../containers/TableUsers.jsx';
 import Tables from '../containers/Tables.jsx';
-
 
 
 const DefaultPage = (props) => {
@@ -35,6 +35,10 @@ function MasterLayout() {
                                         <span className="hide-menu">Tables</span></Link>
                                 </li>
                                 <li className="sidebar-item">
+                                    <Link to="/users" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-pencil"></i>
+                                        <span className="hide-menu">All Users</span></Link>
+                                </li>
+                                <li className="sidebar-item">
                                     <Link to="/login" className="sidebar-link has-arrow waves-effect waves-dark" aria-expanded="false"><i className="mdi mdi-account-key"></i>
                                         <span className="hide-menu">Login</span>
                                     </Link>
@@ -55,6 +59,7 @@ function MasterLayout() {
                             <Route path="/login" component={LoginPage} />
                             <Route path="/register" component={ContentForm} />
                             <Route path="/dashboard" component={Dashboard} />
+                            <Route path="/users" component={TableUsers} />
                             <Route path="/tables" component={Tables} />
                         </Switch>
 

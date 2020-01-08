@@ -1,4 +1,5 @@
-export const tasklistData=[{"id":1,"task_name":"synergy","task_description":"Visionary methodical knowledge base","assigned_to":null,"due_date":"30.09.2021","has_subtasks":true,"related_subtasks":"MSG1500","repeating":29963,"task_id":"aea61b35-b241-4c6d-9b93-5c083a33224f"},
+export const tasklistData = [
+{"id":1,"task_name":"synergy","task_description":"Visionary methodical knowledge base","assigned_to":null,"due_date":"30.09.2021","has_subtasks":true,"related_subtasks":"MSG1500","repeating":29963,"task_id":"aea61b35-b241-4c6d-9b93-5c083a33224f"},
 {"id":2,"task_name":"Distributed","task_description":"Self-enabling background extranet","assigned_to":"pbelfrage1","due_date":"21.03.2021","has_subtasks":false,"related_subtasks":"HVT8677","repeating":92216,"task_id":"078e1e1f-64df-499b-8185-fcbbbabdb0aa"},
 {"id":3,"task_name":"Progressive","task_description":"Progressive tertiary parallelism","assigned_to":null,"due_date":"22.03.2021","has_subtasks":true,"related_subtasks":"QSZ1822","repeating":98000,"task_id":"f968e5fb-fa71-42c8-a662-0142e2646c06"},
 {"id":4,"task_name":"framework","task_description":"Managed regional knowledge user","assigned_to":"mrudderham3","due_date":"14.09.2019","has_subtasks":false,"related_subtasks":"VYR6262","repeating":86100,"task_id":"0ce8edd3-8556-4ab2-b1f3-6e88037f2668"},
