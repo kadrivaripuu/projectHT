@@ -7,6 +7,7 @@ import LoginPage from '../containers/LoginPage.jsx';
 import ContentForm from '../containers/ContentForm.jsx';
 import DefaultContent from '../containers/DefaultContent.jsx';
 import Dashboard from '../containers/Dashboard.jsx';
+import AddProject from '../containers/AddProject.jsx';
 import TableUsers from '../containers/TableUsers.jsx';
 import Tables from '../containers/Tables.jsx';
 
@@ -30,12 +31,17 @@ function MasterLayout() {
                                         <span className="hide-menu">Dashboard</span>
                                     </Link>
                                 </li>
+                                <li className="sidebar-item">
+                                    <Link to="/addproject" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-pencil"></i>
+                                        <span className="hide-menu">Add project</span>
+                                    </Link>
+                                </li>
                                 {/* <li className="sidebar-item">
                                     <Link to="/tables" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-border-inside"></i>
                                         <span className="hide-menu">Tables</span></Link>
                                 </li> */}
                                 <li className="sidebar-item">
-                                    <Link to="/users" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-pencil"></i>
+                                    <Link to="/users" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-chart-bubble"></i>
                                         <span className="hide-menu">All Users</span></Link>
                                 </li>
                                 <li className="sidebar-item">
@@ -54,15 +60,22 @@ function MasterLayout() {
                 </aside>
                 <div className="page-wrapper">
                     <div className="container-fluid">
-                        <Switch>
-                            <Route exact path="/" component={DefaultPage} />
-                            <Route path="/login" component={LoginPage} />
-                            <Route path="/register" component={ContentForm} />
-                            <Route path="/dashboard" component={Dashboard} />
-                            <Route path="/users" component={TableUsers} />
-                            <Route path="/tables" component={Tables} />
-                        </Switch>
+                        <div className="card">
+                            <form className="form-horizontal" >
+                                <div className="card-body">
+                                    <Switch>
+                                        <Route exact path="/" component={DefaultPage} />
+                                        <Route path="/login" component={LoginPage} />
+                                        <Route path="/register" component={ContentForm} />
+                                        <Route path="/dashboard" component={Dashboard} />
+                                        <Route path="/addproject" component={AddProject} />
+                                        <Route path="/users" component={TableUsers} />
+                                        <Route path="/tables" component={Tables} />
+                                    </Switch>
 
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
