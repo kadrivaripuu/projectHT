@@ -30,10 +30,10 @@ function MasterLayout() {
                                         <span className="hide-menu">Dashboard</span>
                                     </Link>
                                 </li>
-                                <li className="sidebar-item">
+                                {/* <li className="sidebar-item">
                                     <Link to="/tables" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-border-inside"></i>
                                         <span className="hide-menu">Tables</span></Link>
-                                </li>
+                                </li> */}
                                 <li className="sidebar-item">
                                     <Link to="/users" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-pencil"></i>
                                         <span className="hide-menu">All Users</span></Link>
