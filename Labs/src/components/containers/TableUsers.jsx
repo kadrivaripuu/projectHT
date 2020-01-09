@@ -19,7 +19,7 @@ const selectRow = {
     clickToSelect: true,
 };
 
-const productDetails = (e) => {
+const userDetails = (e) => {
     //console.log(e.target);
     var { id } = e.target;
     console.log("See Details for Id: " + id);
@@ -27,16 +27,23 @@ const productDetails = (e) => {
 }
 
 const formatProductDetailsButtonCell = (cell, row) => {
-    let clickHandler = productDetails;
-    var emptyContent = React.createElement('i', { id: row.id, onClick: clickHandler });
-    var aBtn = React.createElement('a', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-success", onClick: clickHandler }, emptyContent);
+    let clickHandler = userDetails;
+    var aBtn = React.createElement('a', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-success", onClick: clickHandler }, React.createElement('i'));
+
     return aBtn;
+}
+
+const formatProductDetailsButtonCell2 = (cell, row) => {
+    let clickHandler = userDetails;
+    var bBtn = React.createElement('a', { id: row.id - 1, className: "btnNtfcdDetails btn-action glyphicons eye_close btn-warning", onClick: clickHandler }, React.createElement('i'));
+    return bBtn;
 }
 
 const columns = [{
     dataField: 'id',
     text: 'ID',
-    sort: true
+    sort: true,
+    size: 'col-xs-1'
 }, {
     dataField: 'fname',
     text: 'First Name',
@@ -61,14 +68,18 @@ const columns = [{
     text: 'Role',
     sort: true
 }, {
-    dataField: '',
-    text: 'Action',
+    dataField: 'view',
+    text: '',
     formatter: formatProductDetailsButtonCell
+}, {
+    dataField: 'edit',
+    text: '',
+    formatter: formatProductDetailsButtonCell2
 }];
 
 const customTotal = (from, to, size) => (
     <span className="react-bootstrap-table-pagination-total">
-        Showing {from} to {to} of {size} Results
+        Showing {from} to {to} of {size} results
     </span>
 );
 
@@ -106,7 +117,7 @@ export default class TableUsers extends React.Component {
 
     render() {
 
-        const contentTable = ({ paginationProps, paginationTableProps }) => {
+        const contentTable = ({ paginationTableProps }) => {
             return (
                 <React.Fragment>
                     <ToolkitProvider
@@ -114,14 +125,12 @@ export default class TableUsers extends React.Component {
                         columns={columns}
                         data={usersData}
                         search
-
                     >
                         {
                             (toolkitprops) => {
-
                                 return (
                                     <div>
-                                        <div className="row">
+                                        <div className="form-group row">
                                             <div className="col-sm-8">
                                             </div>
                                             <div className="col-sm-4">
@@ -130,8 +139,10 @@ export default class TableUsers extends React.Component {
                                         </div>
                                         <br />
                                         <BootstrapTable
+                                        
                                             striped
                                             hover
+                                            condensed
                                             selectRow={selectRow}
                                             {...toolkitprops.baseProps}
                                             {...paginationTableProps}
@@ -144,12 +155,12 @@ export default class TableUsers extends React.Component {
             );
         }
         return (
-            <div>
-                <h4>Users:</h4>
+            <React.Fragment>
+                <h4 className="card-title">All Users</h4>
                 <PaginationProvider pagination={paginationFactory(paginationConfig)} >
                     {contentTable}
                 </PaginationProvider>
-            </div >
+            </React.Fragment>
         );
     }
 }
