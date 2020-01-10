@@ -6,9 +6,9 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import 'react-bootstrap-table2-toolkit/dist/react-bootstrap-table2-toolkit.min.css';
 
-// import './TableToolkitPaginationPage.css';
+import './TableToolkitPaginationPage.css';
 
-import paginationFactory, { PaginationProvider } from 'react-bootstrap-table2-paginator';
+import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone } from 'react-bootstrap-table2-paginator';
 
 import { usersData } from '../data/UsersData';
 
@@ -20,30 +20,32 @@ const selectRow = {
 };
 
 const userDetails = (e) => {
-    //console.log(e.target);
-    var { id } = e.target;
+    // console.log(e.target);
+    let { id } = e.target;
+
     console.log("See Details for Id: " + id);
     //hashHistory.push('/contacts/details/'+id);
 }
 
 const formatProductDetailsButtonCell = (cell, row) => {
     let clickHandler = userDetails;
-    var aBtn = React.createElement('a', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-success", onClick: clickHandler }, React.createElement('i'));
+    let emptyContent = React.createElement('i', { id: row.id});
+    let viewBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-info", onClick: clickHandler}, emptyContent);
 
-    return aBtn;
+    return viewBtn;
 }
 
 const formatProductDetailsButtonCell2 = (cell, row) => {
     let clickHandler = userDetails;
-    var bBtn = React.createElement('a', { id: row.id - 1, className: "btnNtfcdDetails btn-action glyphicons eye_close btn-warning", onClick: clickHandler }, React.createElement('i'));
-    return bBtn;
+    let emptyContent = React.createElement('i', { id: row.id});
+    let editBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons pencil btn-warning", onClick: clickHandler}, emptyContent);
+    return editBtn;
 }
 
 const columns = [{
     dataField: 'id',
     text: 'ID',
-    sort: true,
-    size: 'col-xs-1'
+    sort: true
 }, {
     dataField: 'fname',
     text: 'First Name',
@@ -58,7 +60,8 @@ const columns = [{
     sort: true
 }, {
     dataField: 'password',
-    text: 'password'
+    text: 'password',
+    style:  { color: "lightgray"}
 }, {
     dataField: 'email',
     text: 'Email',
@@ -69,11 +72,11 @@ const columns = [{
     sort: true
 }, {
     dataField: 'view',
-    text: '',
+    text: '[View]',
     formatter: formatProductDetailsButtonCell
 }, {
     dataField: 'edit',
-    text: '',
+    text: '[Edit]',
     formatter: formatProductDetailsButtonCell2
 }];
 
@@ -84,6 +87,7 @@ const customTotal = (from, to, size) => (
 );
 
 const paginationConfig = {
+   
     paginationSize: 5,
     pageStartIndex: 1,
     firstPageText: 'First',
@@ -117,7 +121,7 @@ export default class TableUsers extends React.Component {
 
     render() {
 
-        const contentTable = ({ paginationTableProps }) => {
+        const contentTable = ({ paginationProps, paginationTableProps }) => {
             return (
                 <React.Fragment>
                     <ToolkitProvider
@@ -125,6 +129,7 @@ export default class TableUsers extends React.Component {
                         columns={columns}
                         data={usersData}
                         search
+                        bootstrap4
                     >
                         {
                             (toolkitprops) => {
@@ -139,10 +144,9 @@ export default class TableUsers extends React.Component {
                                         </div>
                                         <br />
                                         <BootstrapTable
-                                        
+                                            classes="table-responsive"
                                             striped
                                             hover
-                                            condensed
                                             selectRow={selectRow}
                                             {...toolkitprops.baseProps}
                                             {...paginationTableProps}

@@ -20,8 +20,8 @@ const productDetails = (e) => {
 const formatProductDetailsButtonCell = (cell, row) => {
     let clickHandler = productDetails;
     var emptyContent = React.createElement('i', { id: row.id, onClick: clickHandler });
-    var aBtn = React.createElement('a', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-success", onClick: clickHandler }, emptyContent);
-    return aBtn;
+    var viewBtn = React.createElement('a', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-info", onClick: clickHandler }, emptyContent);
+    return viewBtn;
 }
 
 const columns = [{
