@@ -36,10 +36,10 @@ function MasterLayout() {
                                         <span className="hide-menu">Add project</span>
                                     </Link>
                                 </li>
-                                {/* <li className="sidebar-item">
+                                <li className="sidebar-item">
                                     <Link to="/tables" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-border-inside"></i>
                                         <span className="hide-menu">Tables</span></Link>
-                                </li> */}
+                                </li>
                                 <li className="sidebar-item">
                                     <Link to="/users" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-chart-bubble"></i>
                                         <span className="hide-menu">All Users</span></Link>
@@ -60,9 +60,10 @@ function MasterLayout() {
                 </aside>
                 <div className="page-wrapper">
                     <div className="container-fluid">
-                        <div className="card">
-                            <form className="form-horizontal" >
-                                <div className="card-body">
+                         <div className="card">
+                            {/*<form className="form-horizontal" >*/}
+                                <div className="card-body"> 
+                                    
                                     <Switch>
                                         <Route exact path="/" component={DefaultPage} />
                                         <Route path="/login" component={LoginPage} />
@@ -74,8 +75,8 @@ function MasterLayout() {
                                     </Switch>
 
                                 </div>
-                            </form>
-                        </div>
+                            {/* </form>*/}
+                        </div> 
                     </div>
                 </div>
             </div>
