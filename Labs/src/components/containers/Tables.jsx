@@ -26,15 +26,15 @@ const formatProductDetailsButtonCell = (cell, row) => {
 
 const columns = [{
     dataField: 'id',
-    text: 'Item ID',
-    sort: true
-}, {
-    dataField: 'task_name',
-    text: 'Task Name',
+    text: 'ID',
     sort: true
 }, {
     dataField: 'task_id',
     text: 'Task ID'
+}, {
+    dataField: 'task_name',
+    text: 'Task Name',
+    sort: true
 }, {
     dataField: 'task_description',
     text: 'Task Description'
@@ -48,9 +48,6 @@ const columns = [{
 }, {
     dataField: 'repeating',
     text: 'Repeat times'
-}, {
-    dataField: 'has_subtasks',
-    text: 'Has Subtasks'
 }, {
     dataField: 'related_subtasks',
     text: 'Related Subtasks'
@@ -74,7 +71,7 @@ export default class Tables extends React.Component {
 
                 <BootstrapTable
                     keyField='id' data={tasklistData} columns={columns}
-                    
+
                     striped
                     hover
                     selectRow={selectRow}

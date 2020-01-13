@@ -29,16 +29,16 @@ const userDetails = (e) => {
 
 const formatProductDetailsButtonCell = (cell, row) => {
     let clickHandler = userDetails;
-    let emptyContent = React.createElement('i', { id: row.id});
-    let viewBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-info", onClick: clickHandler}, emptyContent);
+    let emptyContent = React.createElement('i', { id: row.id });
+    let viewBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-info", onClick: clickHandler }, emptyContent);
 
     return viewBtn;
 }
 
 const formatProductDetailsButtonCell2 = (cell, row) => {
     let clickHandler = userDetails;
-    let emptyContent = React.createElement('i', { id: row.id});
-    let editBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons pencil btn-warning", onClick: clickHandler}, emptyContent);
+    let emptyContent = React.createElement('i', { id: row.id });
+    let editBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons pencil btn-warning", onClick: clickHandler }, emptyContent);
     return editBtn;
 }
 
@@ -60,8 +60,8 @@ const columns = [{
     sort: true
 }, {
     dataField: 'password',
-    text: 'password',
-    style:  { color: "lightgray"}
+    text: 'Password',
+    style: { color: "lightgray" }
 }, {
     dataField: 'email',
     text: 'Email',
@@ -87,7 +87,7 @@ const customTotal = (from, to, size) => (
 );
 
 const paginationConfig = {
-   
+
     paginationSize: 5,
     pageStartIndex: 1,
     firstPageText: 'First',
@@ -113,6 +113,15 @@ const paginationConfig = {
     }] // A numeric array is also available. the purpose of above example is custom the text
 };
 
+const rowEvents = {
+    onClick: (e, row, rowIndex) => {
+      console.log(`clicked on row with index: ${rowIndex}`);
+    },
+    
+  };
+  
+
+
 
 export default class TableUsers extends React.Component {
     constructor(props) {
@@ -129,28 +138,34 @@ export default class TableUsers extends React.Component {
                         columns={columns}
                         data={usersData}
                         search
+                        
                         bootstrap4
                     >
                         {
                             (toolkitprops) => {
                                 return (
                                     <div>
-                                        <div className="form-group row">
+                                        <div className="row justify-content-left">
                                             <div className="col-sm-8">
+                                                <h4 className="card-title">All Users</h4>
                                             </div>
                                             <div className="col-sm-4">
                                                 <SearchBar {...toolkitprops.searchProps} />
                                             </div>
                                         </div>
                                         <br />
+
                                         <BootstrapTable
+                                            wrapperClasses="row justify-content-between"
                                             classes="table-responsive"
                                             striped
                                             hover
                                             selectRow={selectRow}
+                                            rowEvents={ rowEvents }
                                             {...toolkitprops.baseProps}
                                             {...paginationTableProps}
                                         />
+
                                     </div>);
                             }
                         }
@@ -159,12 +174,13 @@ export default class TableUsers extends React.Component {
             );
         }
         return (
-            <React.Fragment>
-                <h4 className="card-title">All Users</h4>
-                <PaginationProvider pagination={paginationFactory(paginationConfig)} >
-                    {contentTable}
-                </PaginationProvider>
-            </React.Fragment>
+            <div className="justify-content-center">
+                <div>
+                    <PaginationProvider pagination={paginationFactory(paginationConfig)} >
+                        {contentTable}
+                    </PaginationProvider>
+                </div>
+            </div>
         );
     }
 }
