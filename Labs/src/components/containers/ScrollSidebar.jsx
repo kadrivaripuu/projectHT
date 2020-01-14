@@ -50,7 +50,7 @@ export default class ScrollSidebar extends React.Component {
                             </li>
                             <li className="sidebar-item">
                                 <Link to="/register" className="sidebar-link has-arrow waves-effect waves-dark" aria-expanded="false"><i className="mdi mdi-all-inclusive"></i>
-                                    <span className="hide-menu">Register</span>
+                                    <span className="hide-menu" onClick={this.handleOpenModal}>Register</span>
                                 </Link>
                             </li>
                         </ul>
