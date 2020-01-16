@@ -30,7 +30,7 @@ const userDetails = (e) => {
 const formatProductDetailsButtonCell = (cell, row) => {
     let clickHandler = userDetails;
     let emptyContent = React.createElement('i', { id: row.id });
-    let viewBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons eye_open btn-info", onClick: clickHandler }, emptyContent);
+    let viewBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action mdi mdi-account-remove btn-danger", onClick: clickHandler }, emptyContent);
 
     return viewBtn;
 }
@@ -38,7 +38,7 @@ const formatProductDetailsButtonCell = (cell, row) => {
 const formatProductDetailsButtonCell2 = (cell, row) => {
     let clickHandler = userDetails;
     let emptyContent = React.createElement('i', { id: row.id });
-    let editBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action glyphicons pencil btn-warning", onClick: clickHandler }, emptyContent);
+    let editBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action mdi mdi-account-edit btn-warning", onClick: clickHandler }, emptyContent);
     return editBtn;
 }
 
@@ -71,13 +71,13 @@ const columns = [{
     text: 'Role',
     sort: true
 }, {
-    dataField: 'view',
-    text: '[View]',
-    formatter: formatProductDetailsButtonCell
-}, {
     dataField: 'edit',
     text: '[Edit]',
     formatter: formatProductDetailsButtonCell2
+}, {
+    dataField: 'delete',
+    text: '[Delete]',
+    formatter: formatProductDetailsButtonCell
 }];
 
 const customTotal = (from, to, size) => (
