@@ -24,19 +24,45 @@ Polymorphism means many forms - a single object can refer the super class or sub
 
 Q.5     What it means and where can be used the keyword static?
 Suppose you wanted to make a dress from a dress that you already have. You can simply use the original dress to make the new dress. Or, you could make a paper pattern from your original dress and use the paper pattern to create new dresses.
-
 A static method in Java belongs to the class and is like the blue print or the original dress. A non-static method in Java belongs to the object of a class and is like the paper pattern made from the blue print or original dress.
 
 
 Q.6     Where can I access a protected method?
+Variables, methods, and constructors, which are declared protected in a superclass can be accessed only by the subclasses in other package or any class within the package of the protected members' class.
+The protected access modifier cannot be applied to class and interfaces. Methods, fields can be declared protected, however methods and fields in a interface cannot be declared protected.
+Protected access gives the subclass a chance to use the helper method or variable, while preventing a nonrelated class from trying to use it.
+
 
 Q.7     What it means for a method to be public or private?
+    The four access levels are −
+	 (Visible to the package, the default. No modifiers are needed.)
+	! Visible to the class only (private).
+	! Visible to the world (public).
+	 (Visible to the package and all subclasses (protected).)
+
 
 Q.8     What is abstract class?
+- An abstract class must be declared with an abstract keyword.
+- It can have abstract and non-abstract methods.
+- It cannot be instantiated.
+- It can have constructors and static methods also.
+- It can have final methods which will force the subclass not to change the body of the method.
+
 
 Q.9     What is interface?
+An interface in java is a blueprint of a class. It has static constants and abstract methods. It cannot have a method body.
+- It is used to achieve abstraction.
+- By interface, we can support the functionality of multiple inheritance.
+- It can be used to achieve loose coupling.
+
 
 Q.10     Can you describe what is method override?
+Method overriding is used to provide the specific implementation of a method which is already provided by its superclass. Rules for Java Method Overriding:
+- The method must have the same name as in the parent class.
+- The method must have the same parameter as in the parent class.
+- There must be an IS-A relationship (inheritance).
+
+
 
 
 Threads:
@@ -123,11 +149,29 @@ HIBERNATE:
                 
                 4) How can you implement relationships between table in Entity classes?
                 
+
+
+
 ARCHITECTURE:
 
                 1) What problems should be solved in Controller classes?
+
+
                 2) What problems should be solved in Service classes?
+
+
                 3) What problems should be solved in Dao classes?
-				4) Principles of exception handling through layers
+DAO stands for data access object. Usually, the DAO class is responsible for two concepts. Encapsulating the details of the persistence layer and provide a CRUD interface for a single entity.
+The primary advantage of using data access objects is the relatively simple and rigorous separation between two important parts of an application that can but should not know anything of each other, and which can be expected to evolve frequently and independently. Changing business logic can rely on the same DAO interface, while changes to persistence logic do not affect DAO clients as long as the interface remains correctly implemented.
+All details of storage are hidden from the rest of the application (see information hiding). Thus, possible changes to the persistence mechanism can be implemented by just modifying one DAO implementation while the rest of the application isn't affected. DAOs act as an intermediary between the application and the database. They move data back and forth between objects and database records. Unit testing the code is facilitated by substituting the DAO with a test double in the test, thereby making the tests independent of the persistence layer.
+
+
+		4) Principles of exception handling through layers
+
+
                 5) What is a unit test? How should it be designed?
+
+
                 6) What is integration test? How should it be designed?
+
+
