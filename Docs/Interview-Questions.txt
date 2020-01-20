@@ -82,24 +82,80 @@ Threads:
 Collections
 
                 1) Describe Collections classes Api (List, Set, Map, Queue, Stack)
-                
+1.1. List
+Lists represents an ordered collection of elements. Using lists, we can access elements by their integer index (position in the list), and search for elements in the list. index start with 0, just like an array.
+Some useful classes which implement List interface are – ArrayList, LinkedList, Vector.
+
+1.2. Set
+Sets represents a collection of sorted elements. Sets do not allow duplicate elements. Set interface does not provides any guarantee to return the elements in a predictable order (though some Set implementations store elements in their natural ordering and guarantee this order).
+Some useful classes which implement Set interface are – HashSet, TreeSet.
+
+1.3. Map
+The Map interface enable us to store data in key-value pairs (keys should be immutable). A map cannot contain duplicate keys; each key can map to only one value.
+The Map interface provides three collection views, which allow a map’s contents to be viewed as a set of keys, collection of values, or set of key-value mappings. Some map implementations, like the TreeMap class, make specific guarantees to their order; others, like the HashMap class, do not.
+
+1.4. Queue
+A queue data structure is intended to hold the elements (put by producer threads) prior to processing by consumer thread(s). Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.
+Queues typically, but do not necessarily, order elements in a FIFO (first-in-first-out) manner. One such exception is priority queue which order elements according to a supplied Comparator, or the elements’ natural ordering.
+In general, queues do not support blocking insertion or retrieval operations. Blocking queue implementations classes implement BlockingQueue interface.
+Some useful classes which implement Map interface are – LinkedList, PriorityQueue and SynchronousQueue.
+
+1.5. Stack
+The Java Stack interface represents a classical stack data structure, where elements can be pushed to last-in-first-out (LIFO) stack of objects. In Stack we push an element to the top of the stack, and popped off from the top of the stack again later.
+
+       
+
                 2) What are main implementations of List? (What are their difference)
+Some of the most used List implementation classes are ArrayList, LinkedList, Vector, Stack, CopyOnWriteArrayList. LinkedList implements List with a doubly-linked list. ArrayList implements it with a dynamically re-sizing array.
+https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist-in-java
 
                 3) Describe some implementations of Set interface
+HashSet is backed by a HashMap. It makes no guarantees about the sequence of the elements when you iterate them.
+
+LinkedHashSet differs from HashSet by guaranteeing that the order of the elements during iteration is the same as the order they were inserted into the LinkedHashSet. Reinserting an element that is already in the LinkedHashSet does not change this order.
+
+TreeSet also guarantees the order of the elements when iterated, but the order is the sorting order of the elements. In other words, the order in which the elements whould be sorted if you used a Collections.sort() on a List or array containing these elements. This order is determined either by their natural order (if they implement Comparable), or by a specific Comparator implementation.
+
+
 
                 4) Where is hashcode method used in collections?
+The value received from hashCode() is used as the bucket number for storing elements of the set/map. This bucket number is the address of the element inside the set/map.
+When you do contains() it will take the hash code of the element, then look for the bucket where hash code points to. If more than 1 element is found in the same bucket (multiple objects can have the same hash code), then it uses the equals() method to evaluate if the objects are equal, and then decide if contains() is true or false, or decide if element could be added in the set or not.
+
 
                 5) Describe how HashTable works (put and get)
+A hash table is a data structure that is used to store keys/value pairs. It uses a hash function to compute an index into an array in which an element will be inserted or searched. Objects are stored by calling put(key, value) method of HashMap and retrieved by calling get(key) method. By using a good hash function, hashing can work well. Under reasonable assumptions, the average time required to search for an element in a hash table is O(1).
+
+
 
                 6) What are buckets in HashMap?
+HashMap maintains an array of buckets. Each bucket is a linkedlist of key value pairs encapsulated as Entry objects. This array of buckets is called table. Each node of the linked list is an instance of a private class called Entry.
+
+
 
                 7) What is the load factor in a HashMap?
 
+
+
+
                 8) How a TreeSet is able to order objects from a Person class?
+
+
+
 
                 9) How a Set<Person> is able to detect duplicates when I add a new Person in the Set?
 
+
+
+
                 10) What it means O(1) O(n) O(n2)?
+Order of complexity. In computer science, big O notation is used to classify algorithms according to how their running time or space requirements grow as the input size grows.
+In short, O(1) means that it takes a constant time, no matter the amount of data in the set.
+O(n) means it takes an amount of time linear with the size of the set, so a set twice the size will take twice the time.
+O(N2) represents an algorithm whose performance is directly proportional to the square of the size of the input data set. This is common with algorithms that involve nested iterations over the data set.
+
+
+
 
 
 JDBC
