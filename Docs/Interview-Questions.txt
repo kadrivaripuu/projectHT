@@ -1,24 +1,68 @@
 OOP
 
 Q.1     How would you describe the abstraction in OOP?
+Abstraction is selecting data from a larger pool to show only the relevant details to the object. It helps to reduce programming complexity and effort. In Java, abstraction is accomplished using Abstract classes and interfaces.
+
 
 Q.2     How it is possible to implement Encapsulation in a class?
+It refers to the bundling of data with the methods that operate on that data, or the restricting of direct access to some of an object's components. 
+Encapsulation is used to hide the values or state of a structured data object inside a class, preventing unauthorized parties' direct access to them. Publicly accessible methods are generally provided in the class (so-called "getters" and "setters") to access the values, and other client classes call these methods to retrieve and modify the values within the object.
+
 
 Q.3     What are the benefits of Inheritance between classes?
+- Frequent use of code written once, i.e. code reusability.
+- One superclass can be used for the number of subclasses in a hierarchy.
+- No changes to be done in all base classes, just do changes in parent class only.
+- Inheritance is used to generate more dominant objects.
+- Inheritance avoids duplicity and data redundancy.
+- Inheritance is used to avoid space complexity and time complexity.
+
 
 Q.4     How would you describe the polymorphism?
+Polymorphism means many forms - a single object can refer the super class or sub-class depending on the reference type.  Ability to process objects differently depending on their data type or class. More specifically, it is the ability to redefine methods for derived classes
+
 
 Q.5     What it means and where can be used the keyword static?
+Suppose you wanted to make a dress from a dress that you already have. You can simply use the original dress to make the new dress. Or, you could make a paper pattern from your original dress and use the paper pattern to create new dresses.
+A static method in Java belongs to the class and is like the blue print or the original dress. A non-static method in Java belongs to the object of a class and is like the paper pattern made from the blue print or original dress.
+
 
 Q.6     Where can I access a protected method?
+Variables, methods, and constructors, which are declared protected in a superclass can be accessed only by the subclasses in other package or any class within the package of the protected members' class.
+The protected access modifier cannot be applied to class and interfaces. Methods, fields can be declared protected, however methods and fields in a interface cannot be declared protected.
+Protected access gives the subclass a chance to use the helper method or variable, while preventing a nonrelated class from trying to use it.
+
 
 Q.7     What it means for a method to be public or private?
+    The four access levels are −
+	 (Visible to the package, the default. No modifiers are needed.)
+	! Visible to the class only (private).
+	! Visible to the world (public).
+	 (Visible to the package and all subclasses (protected).)
+
 
 Q.8     What is abstract class?
+- An abstract class must be declared with an abstract keyword.
+- It can have abstract and non-abstract methods.
+- It cannot be instantiated.
+- It can have constructors and static methods also.
+- It can have final methods which will force the subclass not to change the body of the method.
+
 
 Q.9     What is interface?
+An interface in java is a blueprint of a class. It has static constants and abstract methods. It cannot have a method body.
+- It is used to achieve abstraction.
+- By interface, we can support the functionality of multiple inheritance.
+- It can be used to achieve loose coupling.
+
 
 Q.10     Can you describe what is method override?
+Method overriding is used to provide the specific implementation of a method which is already provided by its superclass. Rules for Java Method Overriding:
+- The method must have the same name as in the parent class.
+- The method must have the same parameter as in the parent class.
+- There must be an IS-A relationship (inheritance).
+
+
 
 
 Threads:
@@ -38,24 +82,80 @@ Threads:
 Collections
 
                 1) Describe Collections classes Api (List, Set, Map, Queue, Stack)
-                
+1.1. List
+Lists represents an ordered collection of elements. Using lists, we can access elements by their integer index (position in the list), and search for elements in the list. index start with 0, just like an array.
+Some useful classes which implement List interface are – ArrayList, LinkedList, Vector.
+
+1.2. Set
+Sets represents a collection of sorted elements. Sets do not allow duplicate elements. Set interface does not provides any guarantee to return the elements in a predictable order (though some Set implementations store elements in their natural ordering and guarantee this order).
+Some useful classes which implement Set interface are – HashSet, TreeSet.
+
+1.3. Map
+The Map interface enable us to store data in key-value pairs (keys should be immutable). A map cannot contain duplicate keys; each key can map to only one value.
+The Map interface provides three collection views, which allow a map’s contents to be viewed as a set of keys, collection of values, or set of key-value mappings. Some map implementations, like the TreeMap class, make specific guarantees to their order; others, like the HashMap class, do not.
+
+1.4. Queue
+A queue data structure is intended to hold the elements (put by producer threads) prior to processing by consumer thread(s). Besides basic Collection operations, queues provide additional insertion, extraction, and inspection operations.
+Queues typically, but do not necessarily, order elements in a FIFO (first-in-first-out) manner. One such exception is priority queue which order elements according to a supplied Comparator, or the elements’ natural ordering.
+In general, queues do not support blocking insertion or retrieval operations. Blocking queue implementations classes implement BlockingQueue interface.
+Some useful classes which implement Map interface are – LinkedList, PriorityQueue and SynchronousQueue.
+
+1.5. Stack
+The Java Stack interface represents a classical stack data structure, where elements can be pushed to last-in-first-out (LIFO) stack of objects. In Stack we push an element to the top of the stack, and popped off from the top of the stack again later.
+
+       
+
                 2) What are main implementations of List? (What are their difference)
+Some of the most used List implementation classes are ArrayList, LinkedList, Vector, Stack, CopyOnWriteArrayList. LinkedList implements List with a doubly-linked list. ArrayList implements it with a dynamically re-sizing array.
+https://stackoverflow.com/questions/322715/when-to-use-linkedlist-over-arraylist-in-java
 
                 3) Describe some implementations of Set interface
+HashSet is backed by a HashMap. It makes no guarantees about the sequence of the elements when you iterate them.
+
+LinkedHashSet differs from HashSet by guaranteeing that the order of the elements during iteration is the same as the order they were inserted into the LinkedHashSet. Reinserting an element that is already in the LinkedHashSet does not change this order.
+
+TreeSet also guarantees the order of the elements when iterated, but the order is the sorting order of the elements. In other words, the order in which the elements whould be sorted if you used a Collections.sort() on a List or array containing these elements. This order is determined either by their natural order (if they implement Comparable), or by a specific Comparator implementation.
+
+
 
                 4) Where is hashcode method used in collections?
+The value received from hashCode() is used as the bucket number for storing elements of the set/map. This bucket number is the address of the element inside the set/map.
+When you do contains() it will take the hash code of the element, then look for the bucket where hash code points to. If more than 1 element is found in the same bucket (multiple objects can have the same hash code), then it uses the equals() method to evaluate if the objects are equal, and then decide if contains() is true or false, or decide if element could be added in the set or not.
+
 
                 5) Describe how HashTable works (put and get)
+A hash table is a data structure that is used to store keys/value pairs. It uses a hash function to compute an index into an array in which an element will be inserted or searched. Objects are stored by calling put(key, value) method of HashMap and retrieved by calling get(key) method. By using a good hash function, hashing can work well. Under reasonable assumptions, the average time required to search for an element in a hash table is O(1).
+
+
 
                 6) What are buckets in HashMap?
+HashMap maintains an array of buckets. Each bucket is a linkedlist of key value pairs encapsulated as Entry objects. This array of buckets is called table. Each node of the linked list is an instance of a private class called Entry.
+
+
 
                 7) What is the load factor in a HashMap?
 
+
+
+
                 8) How a TreeSet is able to order objects from a Person class?
+
+
+
 
                 9) How a Set<Person> is able to detect duplicates when I add a new Person in the Set?
 
+
+
+
                 10) What it means O(1) O(n) O(n2)?
+Order of complexity. In computer science, big O notation is used to classify algorithms according to how their running time or space requirements grow as the input size grows.
+In short, O(1) means that it takes a constant time, no matter the amount of data in the set.
+O(n) means it takes an amount of time linear with the size of the set, so a set twice the size will take twice the time.
+O(N2) represents an algorithm whose performance is directly proportional to the square of the size of the input data set. This is common with algorithms that involve nested iterations over the data set.
+
+
+
 
 
 JDBC
@@ -105,11 +205,29 @@ HIBERNATE:
                 
                 4) How can you implement relationships between table in Entity classes?
                 
+
+
+
 ARCHITECTURE:
 
                 1) What problems should be solved in Controller classes?
+
+
                 2) What problems should be solved in Service classes?
+
+
                 3) What problems should be solved in Dao classes?
-				4) Principles of exception handling through layers
+DAO stands for data access object. Usually, the DAO class is responsible for two concepts. Encapsulating the details of the persistence layer and provide a CRUD interface for a single entity.
+The primary advantage of using data access objects is the relatively simple and rigorous separation between two important parts of an application that can but should not know anything of each other, and which can be expected to evolve frequently and independently. Changing business logic can rely on the same DAO interface, while changes to persistence logic do not affect DAO clients as long as the interface remains correctly implemented.
+All details of storage are hidden from the rest of the application (see information hiding). Thus, possible changes to the persistence mechanism can be implemented by just modifying one DAO implementation while the rest of the application isn't affected. DAOs act as an intermediary between the application and the database. They move data back and forth between objects and database records. Unit testing the code is facilitated by substituting the DAO with a test double in the test, thereby making the tests independent of the persistence layer.
+
+
+		4) Principles of exception handling through layers
+
+
                 5) What is a unit test? How should it be designed?
+
+
                 6) What is integration test? How should it be designed?
+
+
