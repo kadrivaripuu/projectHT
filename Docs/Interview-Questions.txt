@@ -129,28 +129,34 @@ A hash table is a data structure that is used to store keys/value pairs. It uses
 
 
                 6) What are buckets in HashMap?
-HashMap maintains an array of buckets. Each bucket is a linkedlist of key value pairs encapsulated as Entry objects. This array of buckets is called table. Each node of the linked list is an instance of a private class called Entry.
+HashMap maintains an array of buckets. In Hashing, hashcode() value decides the bucket index. Many objects may have same hashcode() value. In such case, all such objects will be mapped to same bucket.
+Theoretically bucket can be imagined as a container for all such objects. It can be implemented in various ways. It is implemented as a simple linked list in "HashMap" implementation. It means, bucket is implemented as a linked list. We can imagine that each bucket is a linked list. For example, if there are 3 objects (A,B,C) in a bucket, bucket can be visualized as linked list A->B->C->null
 
 
 
                 7) What is the load factor in a HashMap?
-
+The Load factor is a measure that decides when to increase the HashMap capacity to maintain the get() and put() operation complexity of O(1). The default load factor of HashMap is 0.75f (75% of the map size).
+Load Factor decides "when to increase the number of buckets."
+	The initial capacity of hashmap is=16
+	The default load factor of hashmap=0.75
+	According to the formula as mentioned above: 16*0.75=12
+	As soon as 13th element (key-value pair) will come into the Hashmap, it will increase its size from default 16 buckets to 32 buckets.
 
 
 
                 8) How a TreeSet is able to order objects from a Person class?
-
+The TreeSet class internally uses a TreeMap to store elements. The elements in a TreeSet are sorted according to their natural ordering (or based on a custom Comparator that is supplied at the time of creation of the TreeSet). TreeSet does not preserve the insertion order of elements but elements are sorted by keys.
 
 
 
                 9) How a Set<Person> is able to detect duplicates when I add a new Person in the Set?
-
+Every object has a HashCode and an object results an hashcode, that's already 
 
 
 
                 10) What it means O(1) O(n) O(n2)?
 Order of complexity. In computer science, big O notation is used to classify algorithms according to how their running time or space requirements grow as the input size grows.
-In short, O(1) means that it takes a constant time, no matter the amount of data in the set.
+In short, O(1) means that it takes a constant time, no matter the amount of data in the set. For example, taking an element out of a map.
 O(n) means it takes an amount of time linear with the size of the set, so a set twice the size will take twice the time.
 O(N2) represents an algorithm whose performance is directly proportional to the square of the size of the input data set. This is common with algorithms that involve nested iterations over the data set.
 
@@ -222,7 +228,7 @@ The primary advantage of using data access objects is the relatively simple and 
 All details of storage are hidden from the rest of the application (see information hiding). Thus, possible changes to the persistence mechanism can be implemented by just modifying one DAO implementation while the rest of the application isn't affected. DAOs act as an intermediary between the application and the database. They move data back and forth between objects and database records. Unit testing the code is facilitated by substituting the DAO with a test double in the test, thereby making the tests independent of the persistence layer.
 
 
-		4) Principles of exception handling through layers
+				4) Principles of exception handling through layers
 
 
                 5) What is a unit test? How should it be designed?
