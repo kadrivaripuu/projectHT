@@ -1,6 +1,6 @@
 OOP
 
-Q.1     How would you describe the abstraction in OOP?
+!Q.1     How would you describe the abstraction in OOP?
 Abstraction is selecting data from a larger pool to show only the relevant details to the object. It helps to reduce programming complexity and effort. In Java, abstraction is accomplished using Abstract classes and interfaces.
 
 
@@ -18,7 +18,7 @@ Q.3     What are the benefits of Inheritance between classes?
 - Inheritance is used to avoid space complexity and time complexity.
 
 
-Q.4     How would you describe the polymorphism?
+!Q.4     How would you describe the polymorphism? (upcasting, late-binding... E räägib)
 Polymorphism means many forms - a single object can refer the super class or sub-class depending on the reference type.  Ability to process objects differently depending on their data type or class. More specifically, it is the ability to redefine methods for derived classes
 
 
@@ -145,12 +145,12 @@ Load Factor decides "when to increase the number of buckets."
 
 
                 8) How a TreeSet is able to order objects from a Person class?
-The TreeSet class internally uses a TreeMap to store elements. The elements in a TreeSet are sorted according to their natural ordering (or based on a custom Comparator that is supplied at the time of creation of the TreeSet). TreeSet does not preserve the insertion order of elements but elements are sorted by keys.
+The TreeSet class internally uses a TreeMap to store elements. The elements in a TreeSet are sorted according to their natural ordering (it means that they are comparable) or based on a custom Comparator that is supplied at the time of creation of the TreeSet. TreeSet does not preserve the insertion order of elements but elements are sorted by keys.
 
 
 
                 9) How a Set<Person> is able to detect duplicates when I add a new Person in the Set?
-Every object has a HashCode and an object results an hashcode, that's already 
+Every object has a HashCode and if an object results an hashcode, that's already in the Set, then 
 
 
 
@@ -167,15 +167,29 @@ O(N2) represents an algorithm whose performance is directly proportional to the 
 JDBC
 
                 1) Can you describe main java objects involved into a task where I need to query DB tables?
+1) establish connection
+2) statement || prepared statement
+3) map resultset into <YourObject> (List or smth).
 
+				
                 2) Why Connections are expensive to create?
-
+Opening and closing database connections (think: tcp sockets and connections) like with .getConnection() method takes some time = they are expensive.
+				
                 3) How can we mitigate (2)?
 
+				
                 4) What are benefits of PreparedStatement over Statement objects?
+Statement - represents your whole SQL statement
+PreparedStatement - represents your SQL statement and allows for placeholders (?). 
 
++ PreparedStatement prevents SQL injection threats as it automatically escapes the special characters.
++ Precompiles and caches the SQL statement for faster execution and to reuse the same SQL statement in batch.
++ PreparedStatement provides clear separation between the query code and the parameter values that improves readability.
++ PreparedStatement provides convenient way to transform Java object types to SQL Data types to pass input parameters.
+				
                 5) What is a Db Driver?
-                
+A database driver is a computer program that implements a protocol (ODBC or JDBC) for a database connection. The driver works like an adapter which connects a generic interface to a specific database vendor implementation. ... To connect with individual databases, JDBC requires drivers for each specific database type.
+				
                 
 
 
