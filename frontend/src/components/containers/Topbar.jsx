@@ -17,10 +17,10 @@ export default class Topbar extends React.Component {
                             <Link to="/" className="navbar-brand">
                                 <b className="logo-icon p-l-10">
                                     <i className="wi wi-sunset"></i>
-                                    <img src="assets/images/logo-icon.png" alt="homepage" className="light-logo" />
+                                    <img src="assets/images/logo-icon2.png" alt="homepage" className="light-logo" />
                                 </b>
                                 <span className="logo-text">
-                                    <img src="assets/images/logo-text.png" alt="homepage" className="light-logo" />
+                                    <img src="assets/images/logo-text2.png" alt="homepage" className="light-logo" />
                                 </span>
                             </Link>
                             <a className="topbartoggler d-block d-md-none waves-effect waves-light" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i className="ti-more"></i></a>
