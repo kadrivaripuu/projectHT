@@ -5,7 +5,6 @@ import httpsProxyAgent from 'https-proxy-agent';
 import ReactModal from 'react-modal';
 
 const mockDataUrl = 'https://my.api.mockaroo.com/Users.json?key=23973c80';
-const echoMockoon = "http://localhost:7000/register";
 const saveUserUrl = "http://localhost:8080/rest/user/save";
 
 
