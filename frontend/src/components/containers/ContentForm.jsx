@@ -4,9 +4,9 @@ import axios from 'axios';
 import httpsProxyAgent from 'https-proxy-agent';
 import ReactModal from 'react-modal';
 
-
 const mockDataUrl = 'https://my.api.mockaroo.com/Users.json?key=23973c80';
 const echoMockoon = "http://localhost:7000/register";
+const saveUserUrl = "http://localhost:8080/rest/user/save";
 
 
 export default class ContentForm extends React.Component {
@@ -22,7 +22,7 @@ export default class ContentForm extends React.Component {
             showModal: true
         };
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSave = this.handleSave.bind(this);
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
     }
@@ -65,25 +65,20 @@ export default class ContentForm extends React.Component {
     }
 
 
-    handleSubmit(event) {
+    handleSave(event) {
         const options = {
             headers: { "Content-Type": "application/json", "Accept": "application/json" }
         }
-
-
-        // console.log("take all data from this.state");
-        axios.post(echoMockoon, this.state, options)
-            .then((response) => {
-                console.log("post-response received ");
-
-            }).catch((exception) => {
+        axios.post(saveUserUrl, this.state, options)
+            .catch((exception) => {
                 console.log(exception);
             });
-
-        console.log("post them to mock server (Mockoon)");
         event.preventDefault();
     }
 
+
+
+    
     render() {
         return (
             <ReactModal
@@ -160,7 +155,7 @@ export default class ContentForm extends React.Component {
 
                         <div className="border-top row">
                             <div className="card-body">
-                                <button type="submit" className="btn btn-primary" onSubmit={this.handleSubmit}>Save</button>
+                                <button type="submit" className="btn btn-primary" onClick={this.handleSave}>Save</button>
                             </div>
                             <div className="card-body">
                                 <button type="submit" className="btn btn-secondary">Cancel</button>
