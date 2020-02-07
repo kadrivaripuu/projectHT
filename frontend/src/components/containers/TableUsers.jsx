@@ -1,5 +1,8 @@
 import React from 'react';
 
+import axios from 'axios';
+import httpsProxyAgent from 'https-proxy-agent';
+
 import BootstrapTable from 'react-bootstrap-table-next';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
@@ -10,7 +13,8 @@ import './TableToolkitPaginationPage.css';
 
 import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone } from 'react-bootstrap-table2-paginator';
 
-import { usersData } from '../data/UsersData';
+// import { usersData } from '../data/UsersData';
+const findUsersUrl = "http://localhost:8080/rest/user/all";
 
 const { SearchBar } = Search;
 
@@ -109,7 +113,7 @@ const paginationConfig = {
     }, {
         text: '100', value: 100
     }, {
-        text: 'All', value: usersData.length
+        text: 'All', value: 1000
     }] // A numeric array is also available. the purpose of above example is custom the text
 };
 
@@ -126,6 +130,35 @@ const rowEvents = {
 export default class TableUsers extends React.Component {
     constructor(props) {
         super(props);
+        this.getDataFromDB = this.getDataFromDB.bind(this); 
+        this.state = {
+                data: []
+        };
+    }
+
+
+    componentDidMount() {
+        this.getDataFromDB();
+    }
+
+    getDataFromDB() {
+        var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
+        var config = {
+            httpsAgent: agent
+        }
+        axios.get(findUsersUrl, config)
+        .then((response) => {
+            this.setState({data:response.data});
+            // this.setState({ id: response.data.id });
+            // this.setState({ fname: response.data.fname });
+            // this.setState({ lname: response.data.lname });
+            // this.setState({ username: response.data.username });
+            // this.setState({ password: response.data.password });
+            // this.setState({ email: response.data.email });
+            // this.setState({ role: response.data.role});
+        }).catch((exception) => {
+            console.log(exception);
+        });
     }
 
     render() {
@@ -136,7 +169,7 @@ export default class TableUsers extends React.Component {
                     <ToolkitProvider
                         keyField="id"
                         columns={columns}
-                        data={usersData}
+                        data={this.state.data}     
                         search
                         
                         bootstrap4
