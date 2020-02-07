@@ -15,6 +15,7 @@ import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePe
 
 // import { usersData } from '../data/UsersData';
 const findUsersUrl = "http://localhost:8080/rest/user/all";
+const deleteUserUrl = "http://localhost:8080/rest/user/delete/";
 
 const { SearchBar } = Search;
 
@@ -31,8 +32,24 @@ const userDetails = (e) => {
     //hashHistory.push('/contacts/details/'+id);
 }
 
+const deleteUser = (e) => {
+    var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
+        var config = {
+            httpsAgent: agent
+        }
+    let { id } = e.target;
+    axios.get(deleteUserUrl+id, config)
+    .then(data =>
+        this.setState({
+          isLoading: false,
+        }))
+    .catch((exception) => {
+        console.log(exception);
+    });
+}
+
 const formatProductDetailsButtonCell = (cell, row) => {
-    let clickHandler = userDetails;
+    let clickHandler = deleteUser;
     let emptyContent = React.createElement('i', { id: row.id });
     let viewBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action mdi mdi-account-remove btn-danger", onClick: clickHandler }, emptyContent);
 
@@ -132,8 +149,11 @@ export default class TableUsers extends React.Component {
         super(props);
         this.getDataFromDB = this.getDataFromDB.bind(this); 
         this.state = {
-                data: []
+            isLoading: true,
+            data: []
         };
+
+        
     }
 
 
@@ -149,13 +169,6 @@ export default class TableUsers extends React.Component {
         axios.get(findUsersUrl, config)
         .then((response) => {
             this.setState({data:response.data});
-            // this.setState({ id: response.data.id });
-            // this.setState({ fname: response.data.fname });
-            // this.setState({ lname: response.data.lname });
-            // this.setState({ username: response.data.username });
-            // this.setState({ password: response.data.password });
-            // this.setState({ email: response.data.email });
-            // this.setState({ role: response.data.role});
         }).catch((exception) => {
             console.log(exception);
         });
