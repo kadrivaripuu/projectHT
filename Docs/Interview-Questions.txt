@@ -70,6 +70,7 @@ Threads:
                 1) What is a thread?
                 
                 2) How can I run a new thread?
+
                 
                 3) What does the synchronized modifier do when applied to a method?
                 
