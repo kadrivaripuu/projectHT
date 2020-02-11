@@ -22,26 +22,20 @@ function MasterLayout() {
             <div id="main-wrapper">
                 <Topbar />
                 <ScrollSidebar />
-                
+
                 <div className="page-wrapper">
                     <div className="container-fluid">
-                         <div className="card">
-                            {/*<form className="form-horizontal" >*/}
-                                <div className="card-body"> 
-                                    
-                                    <Switch>
-                                        <Route exact path="/" component={DefaultPage} />
-                                        <Route path="/login" component={LoginPage} />
-                                        <Route path="/register" component={ContentForm} />
-                                        <Route path="/dashboard" component={Dashboard} />
-                                        <Route path="/addproject" component={AddProject} />
-                                        <Route path="/users" component={TableUsers} />
-                                        <Route path="/tables" component={Tables} />
-                                    </Switch>
-
-                                </div>
-                            {/* </form>*/}
-                        </div> 
+                        <div className="card">
+                            <Switch>
+                                <Route exact path="/" component={DefaultPage} />
+                                <Route path="/login" component={LoginPage} />
+                                <Route path="/register" component={ContentForm} />
+                                <Route path="/dashboard" component={Dashboard} />
+                                <Route path="/addproject" component={AddProject} />
+                                <Route path="/users" component={TableUsers} />
+                                <Route path="/tables" component={Tables} />
+                            </Switch>
+                        </div>
                     </div>
                 </div>
             </div>

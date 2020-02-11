@@ -69,6 +69,9 @@ export default class ContentForm extends React.Component {
             headers: { "Content-Type": "application/json", "Accept": "application/json" }
         }
         axios.post(saveUserUrl, this.state, options)
+            // .then(
+            //     this.handleCloseModal
+            // )
             .catch((exception) => {
                 console.log(exception);
             });
@@ -157,7 +160,7 @@ export default class ContentForm extends React.Component {
                                 <button type="submit" className="btn btn-primary" onClick={this.handleSave}>Save</button>
                             </div>
                             <div className="card-body">
-                                <button type="submit" className="btn btn-secondary">Cancel</button>
+                                <button type="submit" className="btn btn-secondary" onClick={this.handleCloseModal}>Cancel</button>
                             </div>
                         </div>
                     </div>
