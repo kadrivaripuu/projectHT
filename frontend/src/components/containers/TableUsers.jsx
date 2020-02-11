@@ -15,10 +15,7 @@ import './TableToolkitPaginationPage.css';
 import paginationFactory, { PaginationProvider, PaginationListStandalone, SizePerPageDropdownStandalone } from 'react-bootstrap-table2-paginator';
 
 // import { usersData } from '../data/UsersData';
-const findUsersUrl = "http://localhost:8080/rest/user/all";
-const deleteUserUrl = "http://localhost:8080/rest/user/delete/";
-const oneUserUrl = "http://localhost:8080/rest/user/";
-const saveUserUrl = "http://localhost:8080/rest/user/save";
+const dataUrl = "http://localhost:8080/rest/user/";
 
 const { SearchBar } = Search;
 
@@ -70,14 +67,15 @@ export default class TableUsers extends React.Component {
         super(props);
 
         this.state = {
-            data: [],
-            id: "",
-            fname: "",
-            lname: "",
-            username: "",
-            password: "",
-            email: "",
-            role: "",
+            data: [{
+                id: "",
+                fname: "",
+                lname: "",
+                username: "",
+                password: "",
+                email: "",
+                role: ""
+            }],
             showModal: false
         };
 
@@ -95,7 +93,7 @@ export default class TableUsers extends React.Component {
         var config = {
             httpsAgent: agent
         }
-        axios.get(findUsersUrl, config)
+        axios.get(dataUrl + "all", config)
             .then((response) => {
                 this.setState({ data: response.data });
             }).catch((exception) => {
@@ -113,9 +111,9 @@ export default class TableUsers extends React.Component {
             const options = {
                 headers: { "Content-Type": "application/json", "Accept": "application/json" }
             }
-            axios.post(saveUserUrl, this.state, options)
+            axios.post(dataUrl + "save", this.state, options)
                 .then(
-                    this.setState({ showModal: false })
+                    handleCloseModal
                 )
                 .then(
                     this.getDataFromDB()
@@ -136,7 +134,7 @@ export default class TableUsers extends React.Component {
                 httpsAgent: agent
             }
             let { id } = e.target;
-            axios.get(oneUserUrl + id, config)
+            axios.get(dataUrl + id, config)
                 .then((response) => {
                     this.setState({ showModal: true })
                     this.setState({ id: response.data.data.id });
@@ -158,7 +156,7 @@ export default class TableUsers extends React.Component {
                 httpsAgent: agent
             }
             let { id } = e.target;
-            axios.get(deleteUserUrl + id, config)
+            axios.get(dataUrl + "delete/" + id, config)
                 // if I have time, figure out how to rerender after Delete...
                 .then(
                     this.getDataFromDB()
@@ -173,8 +171,8 @@ export default class TableUsers extends React.Component {
 
         const formatProductDetailsButtonCell = (cell, row) => {
             let emptyContent = React.createElement('i', { id: row.id });
-            let viewBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action mdi mdi-account-remove btn-danger", onClick: deleteUser }, emptyContent);
-            return viewBtn;
+            let delBtn = React.createElement('button', { id: row.id, className: "btnNtfcdDetails btn-action mdi mdi-account-remove btn-danger", onClick: deleteUser }, emptyContent);
+            return delBtn;
         }
 
         const formatProductDetailsButtonCell2 = (cell, row) => {
@@ -223,7 +221,8 @@ export default class TableUsers extends React.Component {
 
         const contentTable = ({ paginationProps, paginationTableProps }) => {
             return (
-                <React.Fragment>
+
+                <div className="card-body">
                     <ToolkitProvider
                         keyField="id"
                         columns={columns}
@@ -247,8 +246,8 @@ export default class TableUsers extends React.Component {
                                         <br />
 
                                         <BootstrapTable
-                                            wrapperClasses="row justify-content-between"
-                                            classes="table-responsive"
+                                            wrapperClasses="row justify-content-center"
+                                            classes="col-10 table-responsive"
                                             striped
                                             hover
                                             rowEvents={rowEvents}
@@ -262,24 +261,19 @@ export default class TableUsers extends React.Component {
                     </ToolkitProvider>
                     <ReactModal
                         isOpen={this.state.showModal}
-                        ariaHideApp={
-                            false}
+                        ariaHideApp={false}
                         style={
                             {
                                 overlay: {
                                     position: 'fixed',
-                                    top: 65,
-                                    left: 220,
-                                    right: 20,
-                                    bottom: 100,
-                                    backgroundColor: 'rgba(255, 255, 255, 0.75)'
+                                    top: 150,
+                                    left: 250,
+                                    right: 100,
+                                    bottom: 150,
+                                    backgroundColor: 'rgba(255, 255, 255, 1)'
                                 },
                                 content: {
                                     position: 'absolute',
-                                    top: '40px',
-                                    left: '40px',
-                                    right: '40px',
-                                    bottom: '40px',
                                     border: '1px solid #ccc',
                                     background: '#fff',
                                     overflow: 'auto',
@@ -294,7 +288,7 @@ export default class TableUsers extends React.Component {
 
                         <div className="row justify-content-around">
                             <div className="col-md-8 ">
-                                <h4 className="card-title">{this.state.fname} {this.state.lname}</h4>
+                                <h4 className="card-title">About {this.state.fname} {this.state.lname}:</h4>
                                 <div className="form-group row">
                                     <label htmlFor="fname" className="col-sm-4 text-right control-label col-form-label">First Name</label>
                                     <div className="col-sm-8">
@@ -328,7 +322,7 @@ export default class TableUsers extends React.Component {
                                 <div className="form-group row">
                                     <label htmlFor="role" className="col-sm-4 text-right control-label col-form-label">Role</label>
                                     <div className="col-sm-8">
-                                        <input type="text" className="form-control" id="role" placeholder="Enter Role(s) Here..." />
+                                        <input type="text" className="form-control" id="role" placeholder="Enter Role(s) Here..." value={this.state.role} onChange={(e) => this.setState({ 'role': e.target.value })} />
                                     </div >
                                 </div>
 
@@ -343,8 +337,10 @@ export default class TableUsers extends React.Component {
                             </div>
                         </div>
 
+
                     </ReactModal>
-                </React.Fragment>
+                </div>
+
             );
         }
 
