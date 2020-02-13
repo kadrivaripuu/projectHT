@@ -52,13 +52,6 @@ const paginationConfig = {
     }] // A numeric array is also available. the purpose of above example is custom the text
 };
 
-const rowEvents = {
-    onClick: (e, row, rowIndex) => {
-        console.log(`clicked on row with index: ${rowIndex}`);
-    },
-
-};
-
 
 
 
@@ -68,13 +61,13 @@ export default class TableUsers extends React.Component {
 
         this.state = {
             data: [{
-                id: "",
-                fname: "",
-                lname: "",
-                username: "",
-                password: "",
-                email: "",
-                role: ""
+                id: '',
+                fname: '',
+                lname: '',
+                username: '',
+                password: '',
+                email: '',
+                role: ''
             }],
             showModal: false
         };
@@ -93,6 +86,7 @@ export default class TableUsers extends React.Component {
         var config = {
             httpsAgent: agent
         }
+
         axios.get(dataUrl + "all", config)
             .then((response) => {
                 this.setState({ data: response.data });
@@ -100,6 +94,8 @@ export default class TableUsers extends React.Component {
                 console.log(exception);
             });
     }
+
+
 
 
     render() {
@@ -128,11 +124,15 @@ export default class TableUsers extends React.Component {
 
         }
 
+        //Somehow I fixed that in Login...A component is changing an uncontrolled input of type text to be controlled. 
+        //Input elements should not switch from uncontrolled to controlled (or vice versa). 
+        //Decide between using a controlled or uncontrolled input element for the lifetime of the component. 
         const getUserDetails = (e) => {
             var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
             var config = {
                 httpsAgent: agent
             }
+
             let { id } = e.target;
             axios.get(dataUrl + id, config)
                 .then((response) => {
@@ -143,7 +143,11 @@ export default class TableUsers extends React.Component {
                     this.setState({ username: response.data.data.username });
                     this.setState({ password: response.data.data.password });
                     this.setState({ email: response.data.data.email });
-                    this.setState({ role: response.data.data.role });
+                    if (response.data.data.role == null) {
+                        this.setState({ role: '' });
+                    } else {
+                        this.setState({ role: response.data.data.role });
+                    }
                 })
                 .catch((exception) => {
                     console.log(exception);
@@ -198,10 +202,10 @@ export default class TableUsers extends React.Component {
             text: 'Username',
             sort: true
         }, {
-            dataField: 'password',
-            text: 'Password',
-            style: { color: "lightgray" }
-        }, {
+            //     dataField: 'password',
+            //     text: 'Password',
+            //     style: { color: "lightgray" }
+            // }, {
             dataField: 'email',
             text: 'Email',
             sort: true
@@ -250,11 +254,9 @@ export default class TableUsers extends React.Component {
                                             classes="col-10 table-responsive"
                                             striped
                                             hover
-                                            rowEvents={rowEvents}
                                             {...toolkitprops.baseProps}
                                             {...paginationTableProps}
                                         />
-
                                     </div>);
                             }
                         }
@@ -269,7 +271,7 @@ export default class TableUsers extends React.Component {
                                     top: 150,
                                     left: 250,
                                     right: 100,
-                                    bottom: 150,
+                                    bottom: 100,
                                     backgroundColor: 'rgba(255, 255, 255, 1)'
                                 },
                                 content: {
@@ -320,7 +322,7 @@ export default class TableUsers extends React.Component {
                                     </div >
                                 </div>
                                 <div className="form-group row">
-                                    <label htmlFor="role" className="col-sm-4 text-right control-label col-form-label">Role</label>
+                                    <label htmlFor="role" className="col-sm-4 text-right control-label col-form-label">Role(s)</label>
                                     <div className="col-sm-8">
                                         <input type="text" className="form-control" id="role" placeholder="Enter Role(s) Here..." value={this.state.role} onChange={(e) => this.setState({ 'role': e.target.value })} />
                                     </div >
@@ -336,11 +338,8 @@ export default class TableUsers extends React.Component {
                                 </div>
                             </div>
                         </div>
-
-
                     </ReactModal>
                 </div>
-
             );
         }
 

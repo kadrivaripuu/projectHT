@@ -3,9 +3,11 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import axios from 'axios';
+import httpsProxyAgent from 'https-proxy-agent';
+
 import ReactModal from 'react-modal';
 
-const dataUrl = "http://localhost:8080/rest/user/";
+const dataUrl = "http://localhost:8080/rest/user/53";
 
 
 export default class LoginPage extends React.Component {
@@ -14,8 +16,8 @@ export default class LoginPage extends React.Component {
         super(props);
 
         this.state = {
-            username: "admin",
-            password: "kn",
+            username: '',
+            password: '',
             showModal: true,
             toDashboard: false
         };
@@ -23,7 +25,6 @@ export default class LoginPage extends React.Component {
         this.handleLogIn = this.handleLogIn.bind(this);
         this.handleOpenModal = this.handleOpenModal.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
-
     }
 
     handleOpenModal() {
@@ -34,19 +35,41 @@ export default class LoginPage extends React.Component {
         this.setState({ showModal: false });
     }
 
+    componentDidMount() {
+        this.handleOpenModal();
+        this.getLoginData();
+    }
+
+    getLoginData() {
+        var agent = new httpsProxyAgent('http://kn.proxy.int.kn:80');
+        var config = {
+            httpsAgent: agent
+        }
+
+        axios.get(dataUrl, config)
+            .then((response) => {
+                this.setState({ username: response.data.data.username });
+                this.setState({ password: response.data.data.password });
+            }).catch((exception) => {
+                console.log(exception);
+            });
+    }
+
+
     handleLogIn = (event) => {
-    
+        if (this.state.username != '' && this.state.password != '') {
             this.setState(() => ({
-                toUsers: true
-            }))
-            
+                toDashboard: true
+            }));
+        }
         event.preventDefault();
 
     }
 
+
     render() {
-        if (this.state.toUsers === true) {
-            return <Redirect to='/users' />
+        if (this.state.toDashboard === true) {
+            return <Redirect to='/dashboard' />
         }
 
         return (
@@ -61,8 +84,8 @@ export default class LoginPage extends React.Component {
                             top: 100,
                             left: 220,
                             right: 20,
-                            bottom: 400,
-                            backgroundColor: 'rgba(255, 255, 255, 0.5)'
+                            bottom: 100,
+                            backgroundColor: 'rgba(255, 255, 255, 0.75)'
                         },
                         content: {
                             position: 'absolute',
@@ -86,12 +109,12 @@ export default class LoginPage extends React.Component {
                         <h4 className="card-title">Log in</h4>
                         <div className="form-group row">
                             <label htmlFor="username" className="col-sm-4 text-right control-label col-form-label">Username</label><div className="col-sm-8">
-                                <input type="text" className="form-control" id="username" placeholder="user" value={this.state.username} onChange={(e) => this.setState({ 'username': e.target.value })}></input>
+                                <input type="text" className="form-control" id="username" placeholder="Enter your username..." value={this.state.username} onChange={(e) => this.setState({ 'username': e.target.value })}></input>
                             </div ><br />
                         </div>
                         <div className="form-group row">
                             <label htmlFor="password" className="col-sm-4 text-right control-label col-form-label">Password</label><div className="col-sm-8">
-                                <input type="text" className="form-control" id="password" placeholder="kn" value={this.state.password} onChange={(e) => this.setState({ 'password': e.target.value })}></input>
+                                <input type="text" className="form-control" id="password" placeholder="Enter your password..." value={this.state.password} onChange={(e) => this.setState({ 'password': e.target.value })}></input>
                             </div ><br />
                         </div>
                         <div className="border-top row">
