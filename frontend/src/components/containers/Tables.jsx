@@ -66,7 +66,7 @@ export default class Tables extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="card-body">
                 <h4>Table Demo:</h4>
 
                 <BootstrapTable
@@ -76,8 +76,7 @@ export default class Tables extends React.Component {
                     hover
                     selectRow={selectRow}
                 />
-
-            </React.Fragment>
+            </div>
         );
     }
 }

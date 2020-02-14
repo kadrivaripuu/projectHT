@@ -31,7 +31,7 @@ export default class Topbar extends React.Component {
                                 <li className="nav-item d-none d-md-block"><a className="nav-link sidebartoggler waves-effect waves-light" data-sidebartype="mini-sidebar"><i className="mdi mdi-menu font-24"></i></a></li>
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span className="d-none d-md-block">Create New <i className="fa fa-angle-down"></i></span>
+                                        {/* <span className="d-none d-md-block">Create New <i className="fa fa-angle-down"></i></span> */}
                                         <span className="d-block d-md-none"><i className="fa fa-plus"></i></span>
                                     </a>
                                     {/* <div className="dropdown-menu" aria-labelledby="navbarDropdown">
