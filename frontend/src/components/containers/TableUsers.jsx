@@ -25,9 +25,9 @@ const customTotal = (from, to, size) => (
     </span>
 );
 
-const paginationConfig = {
 
-    paginationSize: 5,
+const paginationConfig = {
+    paginationSize: 10,
     pageStartIndex: 1,
     firstPageText: 'First',
     prePageText: 'Back',
@@ -290,7 +290,7 @@ export default class TableUsers extends React.Component {
 
                         <div className="row justify-content-around">
                             <div className="col-md-8 ">
-                                <h4 className="card-title">About {this.state.fname} {this.state.lname}:</h4>
+                                <h4 className="card-title">User info:</h4>
                                 <div className="form-group row">
                                     <label htmlFor="fname" className="col-sm-4 text-right control-label col-form-label">First Name</label>
                                     <div className="col-sm-8">

@@ -65,7 +65,7 @@ export default class ContentForm extends React.Component {
 
     handleSave(event) {
         const options = {
-            headers: { "Content-Type": "application/json", "Accept": "application/json" }
+            headers: { "Content-Type": "application/json", "Accept": "application/json"}
         }
         axios.post(saveUserUrl, this.state, options)
             .then(
@@ -93,7 +93,7 @@ export default class ContentForm extends React.Component {
                             top: 100,
                             left: 220,
                             right: 20,
-                            bottom: 100,
+                            
                             backgroundColor: 'rgba(255, 255, 255, 0.75)'
                         },
                         content: {
@@ -116,7 +116,7 @@ export default class ContentForm extends React.Component {
 
                 <div className="row justify-content-around">
                     <div className="col-md-8 ">
-                        <h4 className="card-title">Registration Form</h4>
+                        <h3 className="card-title">Registration Form</h3><br/>
                         <div className="form-group row">
                             <label htmlFor="fname" className="col-sm-4 text-right control-label col-form-label">First Name</label>
                             <div className="col-sm-8">

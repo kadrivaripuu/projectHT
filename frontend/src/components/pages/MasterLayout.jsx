@@ -9,8 +9,8 @@ import DefaultContent from '../containers/DefaultContent.jsx';
 import Dashboard from '../containers/Dashboard.jsx';
 import AddProject from '../containers/AddProject.jsx';
 import TableUsers from '../containers/TableUsers.jsx';
-import Tables from '../containers/Tables.jsx';
-
+// import Tables from '../containers/Tables.jsx';
+import TestRegistration from '../containers/TestRegistration.jsx';
 
 const DefaultPage = (props) => {
     return (<DefaultContent />)
@@ -33,15 +33,16 @@ function MasterLayout() {
                                 <Route path="/dashboard" component={Dashboard} />
                                 <Route path="/addproject" component={AddProject} />
                                 <Route path="/users" component={TableUsers} />
-                                <Route path="/tables" component={Tables} />
+                                <Route path="/testreg" component={TestRegistration} />
                             </Switch>
                         </div>
                     </div>
+                    <footer className="footer text-center">
+                        All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
+                    </footer>
                 </div>
             </div>
-            <footer className="footer text-center">
-                All Rights Reserved by Matrix-admin. Designed and Developed by <a href="https://wrappixel.com">WrapPixel</a>.
-            </footer>
+
         </React.Fragment>
 
     );

@@ -7,7 +7,7 @@ import httpsProxyAgent from 'https-proxy-agent';
 
 import ReactModal from 'react-modal';
 
-const dataUrl = "http://localhost:8080/rest/user/53";
+const dataUrl = "http://localhost:8080/rest/user/1";
 
 
 export default class LoginPage extends React.Component {
@@ -57,7 +57,7 @@ export default class LoginPage extends React.Component {
 
 
     handleLogIn = (event) => {
-        if (this.state.username != '' && this.state.password != '') {
+        if (this.state.username !== '' && this.state.password !== '') {
             this.setState(() => ({
                 toDashboard: true
             }));
@@ -106,14 +106,16 @@ export default class LoginPage extends React.Component {
             >
                 <div className="row justify-content-around">
                     <div className="col-md-8">
-                        <h4 className="card-title">Log in</h4>
+                        <h3 className="card-title">Log in</h3>
                         <div className="form-group row">
-                            <label htmlFor="username" className="col-sm-4 text-right control-label col-form-label">Username</label><div className="col-sm-8">
+                            <label htmlFor="username" className="col-sm-4 text-right control-label col-form-label">Username</label>
+                            <div className="col-sm-8">
                                 <input type="text" className="form-control" id="username" placeholder="Enter your username..." value={this.state.username} onChange={(e) => this.setState({ 'username': e.target.value })}></input>
                             </div ><br />
                         </div>
                         <div className="form-group row">
-                            <label htmlFor="password" className="col-sm-4 text-right control-label col-form-label">Password</label><div className="col-sm-8">
+                            <label htmlFor="password" className="col-sm-4 text-right control-label col-form-label">Password</label>
+                            <div className="col-sm-8">
                                 <input type="text" className="form-control" id="password" placeholder="Enter your password..." value={this.state.password} onChange={(e) => this.setState({ 'password': e.target.value })}></input>
                             </div ><br />
                         </div>

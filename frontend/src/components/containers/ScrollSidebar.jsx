@@ -35,10 +35,7 @@ export default class ScrollSidebar extends React.Component {
                                     <span className="hide-menu">Add project</span>
                                 </Link>
                             </li>
-                            {/* <li className="sidebar-item">
-                                <Link to="/tables" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-border-inside"></i>
-                                    <span className="hide-menu">Tables</span></Link>
-                            </li> */}
+                            
                             <li className="sidebar-item">
                                 <Link to="/users" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-chart-bubble"></i>
                                     <span className="hide-menu">All Users</span></Link>
@@ -52,6 +49,10 @@ export default class ScrollSidebar extends React.Component {
                                 <Link to="/register" className="sidebar-link has-arrow waves-effect waves-dark" aria-expanded="false"><i className="mdi mdi-all-inclusive"></i>
                                 <span className="hide-menu">Register</span>
                                 </Link>
+                            </li>
+                            <li className="sidebar-item">
+                                <Link to="/testreg" className="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i className="mdi mdi-border-inside"></i>
+                                    <span className="hide-menu">!Test Registration!</span></Link>
                             </li>
                         </ul>
                     </nav>
